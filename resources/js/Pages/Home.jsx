@@ -1,4 +1,3 @@
-import Layout from "../Layouts/Layout";
 const Home = ({ appName }) => {
     return (
         <>
@@ -8,7 +7,5 @@ const Home = ({ appName }) => {
         </>
     );
 };
-
-Home.layout = (page) => <Layout children={page} />;
 
 export default Home;
