@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    sleep(2);
-    $appName = env('APP_NAME');
-    return Inertia::render('Home', compact('appName'));
-});
+Route::get('/', [PostController::class, 'index']);
+Route::resource('posts', PostController::class)->except('index');
+
