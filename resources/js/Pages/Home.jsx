@@ -1,5 +1,9 @@
 import { Link } from "@inertiajs/react";
+import { useRoute } from "./ziggy-js";
+
 const Home = ({ posts }) => {
+    const { route } = useRoute();
+
     return (
         <>
             <h1 className="italic font-bold">Welcome to my home page</h1>
@@ -9,7 +13,10 @@ const Home = ({ posts }) => {
                         Date de création :{" "}
                         {new Date(post.created_at).toLocaleDateString()}
                     </span>
-                    <p>{post.body}</p>
+                    <div className="flex justify-between">
+                        <p>{post.body}</p>
+                        <Link href={route("posts.show")}>Read more</Link>
+                    </div>
                 </div>
             ))}
             <div className="m-2">

@@ -4,6 +4,7 @@ import { createInertiaApp } from "@inertiajs/react";
 import { createRoot } from "react-dom/client";
 import "../css/app.css";
 import Layout from "@/Layouts/Layout";
+import { Ziggy } from "./ziggy.js";
 
 createInertiaApp({
     resolve: (name) => {
@@ -22,3 +23,4 @@ createInertiaApp({
         showSpinner: true,
     },
 });
+globalThis.Ziggy = Ziggy;
