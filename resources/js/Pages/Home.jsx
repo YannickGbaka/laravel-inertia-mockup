@@ -1,12 +1,20 @@
-import { Link } from "@inertiajs/react";
-import { useRoute } from "./ziggy-js";
+import { Link, usePage } from "@inertiajs/react";
+import { useState } from "react";
 
 const Home = ({ posts }) => {
-    const { route } = useRoute();
+    const { flash } = usePage().props;
+    const [flashMsg, setFlashMsg] = useState(flash.message);
+
+    setTimeout(() => setFlashMsg(null), 2000);
 
     return (
         <>
             <h1 className="italic font-bold">Welcome to my home page</h1>
+            {flashMsg && (
+                <div className="p-2 m-4 text-center text-black bg-green-200 rounded-md">
+                    {flashMsg}
+                </div>
+            )}
             {posts.data.map((post) => (
                 <div className="p-4 m-4 border rounded-md shadow-md">
                     <span className="text-sm text-slate-500">
@@ -15,7 +23,7 @@ const Home = ({ posts }) => {
                     </span>
                     <div className="flex justify-between">
                         <p>{post.body}</p>
-                        <Link href={route("posts.show")}>Read more</Link>
+                        <Link href={"posts/" + post.id}>Read more</Link>
                     </div>
                 </div>
             ))}

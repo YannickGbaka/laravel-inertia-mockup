@@ -35,7 +35,7 @@ class PostController extends Controller
         
         sleep(2);
         Post::create(['body' => request('body')]);
-        return redirect('/');
+        return redirect('/')->with('message', 'Post created succesfuly');
     }
 
     /**
